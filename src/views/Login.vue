@@ -59,15 +59,14 @@
                         { required: true, message: '请输入验证码', trigger: 'blur' },
                         { min: 5, max: 5, message: '长度为 5 个字符', trigger: 'blur' }
                     ],
-                    captchaImg: null
-                }
+                },
+                captchaImg: null
             };
         },
         methods: {
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        // alert('submit!');
                         this.$axios.post( '/login', this.loginForm).then(res => {
                             const jwt = res.headers['authorization']
                             this.$store.commit('SET_TOKEN', jwt)
@@ -89,6 +88,7 @@
                     console.log(res)
                     this.loginForm.token = res.data.data.token
                     this.captchaImg = res.data.data.captchaImg
+                    this.loginForm.code = ''
                 })
             },
             created() {

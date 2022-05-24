@@ -11,12 +11,12 @@ let Result = {
 Mock.mock('/captcha', 'get', () => {
     Result.data = {
         token: Random.string(32),
-        captchaImg: Random.dataImage('120x40', 'p7n5w')
+        captchaImg: Random.dataImage('100x40', 'p7n5w')
     }
     return Result
 })
 
 Mock.mock('/login', 'post', () => {
-    // 无法再header中传入jwt
+    // 无法在header中传入jwt
     return Result
 })

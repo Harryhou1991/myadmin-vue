@@ -23,7 +23,7 @@
                 </el-form-item>
 
                 <el-form-item label="验证码" prop="code" style="width: 380px;">
-                    <el-input v-model="loginForm.code" style="width: 172px; float: left;"></el-input>
+                    <el-input v-model="loginForm.code" style="width: 172px; float: left;" maxlength="5"></el-input>
                     <el-image :src="captchaImg" class="captchaImg" ></el-image>
                 </el-form-item>
 
@@ -90,10 +90,10 @@
                     this.captchaImg = res.data.data.captchaImg
                     this.loginForm.code = ''
                 })
-            },
-            created() {
-                this.getCaptcha()
             }
+        },
+        created() {
+            this.getCaptcha()
         }
     }
 </script>
